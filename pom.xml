@@ -6,11 +6,11 @@
 
 	<groupId>cz.matesssaks.archetype</groupId>
 	<artifactId>JavaArchetype</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.1.0</version>
 	<packaging>maven-archetype</packaging>
 
-	<name>JavaArchetype</name>
-	<!-- <url>http://www.example.com</url> -->
+	<name>Archetype for java development.</name>
+	<url>https://github.com/matesssaks/JavaArchetype</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

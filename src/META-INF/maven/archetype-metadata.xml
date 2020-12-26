@@ -7,7 +7,7 @@
 		<fileSet filtered="true" packaged="true">
 			<directory>src/</directory>
 		</fileSet>
-		<fileSet filtered="true" packaged="true">
+		<fileSet filtered="true">
 			<directory>tests/</directory>
 		</fileSet>
 	</fileSets>
