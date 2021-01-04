@@ -8,13 +8,44 @@
 	<artifactId>${artifactId}</artifactId>
 	<version>${version}</version>
 
-	<name>${artifactId}</name>
+	<name>${project.artifactId}</name>
+	<description>An example description (Generated using JavaArchetype).</description>
 	<!-- <url>http://www.example.com</url> -->
 
+	<!--
+	<licenses>
+		<license>
+		<name>The Apache Software License, Version 2.0</name>
+		<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+	-->
+
+	<!--
+	<developers>
+		<developer>
+			<name>My Name</name>
+			<email>My@Mail.smth</email>
+			<organization>My Organization</organization>
+			<organizationUrl>MyOrganization@Mail.smth</organizationUrl>
+		</developer>
+	</developers>
+	-->
+
 	<properties>
+		<!-- PROJECT OPTIONS -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<mainClass>${package}.App</mainClass>
+		<args>one two three</args>
+
+		<!-- COMPILER OPTIONS -->
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.showDeprecation>false</maven.compiler.showDeprecation>
+		<maven.compiler.showWarnings>false</maven.compiler.showWarnings>
+
+		<!-- EXEC OPTIONS -->
+		<exec.java>java</exec.java>
 	</properties>
 
 	<dependencies>
@@ -35,48 +66,115 @@
 				<excludes><exclude>**/*.java</exclude></excludes>
 			</resource>
 		</resources>
+		<testResources>
+			<testResource>
+				<directory>${project.basedir}/tests</directory>
+				<excludes><exclude>**/*.java</exclude></excludes>
+			</testResource>
+		</testResources>
 		<directory>${project.basedir}/build</directory>
 		<outputDirectory>${project.build.directory}/classes</outputDirectory>
 		<testOutputDirectory>${project.build.directory}/tests</testOutputDirectory>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<artifactId>maven-clean-plugin</artifactId>
-					<version>3.1.0</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.0.2</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.0</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.22.1</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>3.0.2</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-install-plugin</artifactId>
-					<version>2.5.2</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.8.2</version>
-				</plugin>
-				<!-- <plugin>
-					<artifactId>maven-site-plugin</artifactId>
-					<version>3.7.1</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-project-info-reports-plugin</artifactId>
-					<version>3.0.0</version>
-				</plugin> -->
-			</plugins>
-		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>default-cli</id>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>${mainClass}</mainClass>
+							<commandlineArgs>${args}</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>jar</id>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${exec.java}</executable>
+							<commandlineArgs>-cp "${project.build.directory}/${project.artifactId}-${project.version}.jar${path.separator}${project.build.directory}/libs/*.jar" ${mainClass} ${args}</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>jar-nolib</id>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${exec.java}</executable>
+							<commandlineArgs>-cp "${project.build.directory}/${project.artifactId}-${project.version}.jar" ${mainClass} ${args}</commandlineArgs>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.1.2</version>
+				<executions>
+					<execution>
+						<id>copy-libs</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+							<markersDirectory>${project.build.directory}/lib-markers</markersDirectory>
+							<includeScope>runtime</includeScope>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.1.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.2</version>
+			</plugin>
+			<!-- <plugin>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.7.1</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>3.0.0</version>
+			</plugin> -->
+		</plugins>
 	</build>
 </project>
