@@ -11,6 +11,7 @@
 	<name>${project.artifactId}</name>
 	<description>An example description (Generated using JavaArchetype).</description>
 	<!-- <url>http://www.example.com</url> -->
+	<!-- <organization>Some Organization</organization> -->
 
 	<!--
 	<licenses>
@@ -38,14 +39,32 @@
 		<mainClass>${package}.App</mainClass>
 		<args>one two three</args>
 
+		<!-- EXEC OPTIONS -->
+		<exec.java>java</exec.java>
+
+		<!-- TESTS OPTIONS -->
+		<skipTests>false</skipTests>
+
 		<!-- COMPILER OPTIONS -->
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
+
+		<!-- Use with JDK version 8 and lower -->
+		<!--<maven.compiler.source>7</maven.compiler.source>
+		<maven.compiler.target>7</maven.compiler.target>-->
+
+		<!-- Use with JDK version 9 and higher -->
+		<maven.compiler.release>7</maven.compiler.release>
+
 		<maven.compiler.showDeprecation>false</maven.compiler.showDeprecation>
 		<maven.compiler.showWarnings>false</maven.compiler.showWarnings>
 
-		<!-- EXEC OPTIONS -->
-		<exec.java>java</exec.java>
+		<!-- JAR PACKAGER OPTIONS -->
+		<maven.jar.addMavenDescriptor>true</maven.jar.addMavenDescriptor>
+		<maven.jar.addClasspath>true</maven.jar.addClasspath>
+		<maven.jar.classpathPrefix>lib</maven.jar.classpathPrefix>
+		<maven.jar.mainClass>${mainClass}</maven.jar.mainClass>
+		<maven.jar.addDefaultImplementationEntries>false</maven.jar.addDefaultImplementationEntries>
+		<maven.jar.addDefaultSpecificationEntries>false</maven.jar.addDefaultSpecificationEntries>
+		<maven.jar.addBuildEnvironmentEntries>false</maven.jar.addBuildEnvironmentEntries>
 	</properties>
 
 	<dependencies>
@@ -140,12 +159,12 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.0.2</version>
+				<version>3.2.0</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
+				<version>3.8.1</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -155,17 +174,38 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<id>default-jar</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<archive>
+								<addMavenDescriptor>${maven.jar.addMavenDescriptor}</addMavenDescriptor>
+								<manifest>
+									<addClasspath>${maven.jar.addClasspath}</addClasspath>
+									<classpathPrefix>${maven.jar.classpathPrefix}</classpathPrefix>
+									<addDefaultImplementationEntries>${maven.jar.addDefaultImplementationEntries}</addDefaultImplementationEntries>
+									<addDefaultSpecificationEntries>${maven.jar.addDefaultSpecificationEntries}</addDefaultSpecificationEntries>
+									<addBuildEnvironmentEntries>${maven.jar.addBuildEnvironmentEntries}</addBuildEnvironmentEntries>
+									<mainClass>${maven.jar.mainClass}</mainClass>
+								</manifest>
+							</archive>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-install-plugin</artifactId>
-				<version>2.5.2</version>
+				<version>3.0.0-M1</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
-				<version>2.8.2</version>
+				<version>3.0.0-M1</version>
 			</plugin>
 			<!-- <plugin>
 				<artifactId>maven-site-plugin</artifactId>
