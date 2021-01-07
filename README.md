@@ -114,8 +114,4 @@ limitations under the License.
 ```
 
 ## Contributing
-Contributions are welcome!\
-If you want to contribute to this project, make sure you increase the lowest (patch) version number (Example: 1.0.2 -> 1.0.3) in JavaArchetype's [pom.xml](pom.xml) and in this [README.md](README.md) (Currently only 2x in [Creating workspace with JavaArchetype](#creating-workspace-with-javaarchetype) section.)\
-If we think other version change is needed, you will be contacted by PR chat.
-
-[pom]: src/archetype-resources/pom.xml
+Help us improve this project, see [CONTRIBUTING.md](CONTRIBUTING.md) for more info.
