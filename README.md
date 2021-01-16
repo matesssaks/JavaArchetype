@@ -31,11 +31,11 @@ project
 For proper usage you need to know:
 - group ID: **cz.matesssaks.archetype**
 - artifact ID: **JavaArchetype**
-- version: (**! version installed on your PC !**) — Latest is **1.3.0**
+- version: (**! version installed on your PC !**) — Latest is **1.4.0**
 
 ### Terminal
 To generate project workspace with this archetype in your directory use:\
-`mvn archetype:generate -DarchetypeArtifactId="JavaArchetype" -DarchetypeGroupId="cz.matesssaks.archetype" -DarchetypeVersion="1.3.0"`\
+`mvn archetype:generate -DarchetypeArtifactId="JavaArchetype" -DarchetypeGroupId="cz.matesssaks.archetype" -DarchetypeVersion="1.4.0"`\
 The new folder, containing workspace, with name of *artifactId* you specified will be created. 
 
 ### VS CODE

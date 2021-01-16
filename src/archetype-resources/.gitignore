@@ -28,6 +28,7 @@ hs_err_pid*
 /.project
 /.classpath
 /.factorypath
+/*.code-workspace
 
 # Build files
 /build

@@ -10,5 +10,11 @@
 		<fileSet filtered="true">
 			<directory>tests/</directory>
 		</fileSet>
+		<fileSet filtered="false">
+			<directory></directory>
+			<includes>
+				<include>.gitignore</include>
+			</includes>
+		</fileSet>
 	</fileSets>
 </archetype-descriptor>

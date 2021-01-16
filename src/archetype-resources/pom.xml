@@ -12,6 +12,7 @@
 	<description>An example description (Generated using JavaArchetype).</description>
 	<!-- <url>http://www.example.com</url> -->
 	<!-- <organization>Some Organization</organization> -->
+	<!-- <inceptionYear></inceptionYear> -->
 
 	<!--
 	<licenses>
