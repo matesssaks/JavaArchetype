@@ -28,6 +28,7 @@
 		<developer>
 			<name>My Name</name>
 			<email>My@Mail.smth</email>
+			<url>example.com</url>
 			<organization>My Organization</organization>
 			<organizationUrl>MyOrganization@Mail.smth</organizationUrl>
 		</developer>
