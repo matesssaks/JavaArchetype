@@ -6,12 +6,13 @@
 
 	<groupId>cz.matesssaks.archetype</groupId>
 	<artifactId>JavaArchetype</artifactId>
-	<version>1.4.1</version>
+	<version>1.4.2</version>
 	<packaging>maven-archetype</packaging>
 
 	<name>${project.artifactId}</name>
 	<description>Archetype for java development.</description>
 	<url>https://github.com/matesssaks/JavaArchetype</url>
+	<inceptionYear>2020</inceptionYear>
 
 	<licenses>
 		<license>
@@ -24,6 +25,7 @@
 		<developer>
 			<name>matesssaks</name>
 			<email>matesssaks@email.cz</email>
+			<url>https://github.com/matesssaks</url>
 		</developer>
 	</developers>
 
